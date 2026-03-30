@@ -50,7 +50,7 @@ class AIScorer:
         try:
             message = await self.client.messages.create(
                 model=MODEL,
-                max_tokens=512,
+                max_tokens=1024,
                 messages=[{"role": "user", "content": prompt}],
             )
 
@@ -79,6 +79,7 @@ class AIScorer:
 
         except json.JSONDecodeError as e:
             logger.warning("AI scorer: JSON parse error for '%s': %s", article.title[:50], e)
+            logger.debug("AI scorer: raw response was: %r", response_text)
         except BudgetExceeded:
             raise
         except Exception as e:
@@ -88,11 +89,13 @@ class AIScorer:
 
     async def score_batch(self, articles: list[Article]) -> list[Article]:
         scored: list[Article] = []
+        budget_skipped = 0
         budget_hit = False
 
         for article in articles:
             if budget_hit:
                 scored.append(article)
+                budget_skipped += 1
                 continue
 
             try:
@@ -102,12 +105,15 @@ class AIScorer:
             except BudgetExceeded:
                 budget_hit = True
                 scored.append(article)
+                budget_skipped += 1
 
         success = sum(1 for a in scored if a.ai_score is not None)
-        skipped = len(articles) - success
+        parse_errors = len(articles) - success - budget_skipped
         logger.info("AI scorer: scored %d/%d articles", success, len(articles))
-        if skipped:
-            logger.info("AI scorer: %d articles skipped (budget guardrail)", skipped)
+        if parse_errors:
+            logger.info("AI scorer: %d articles failed (API/parse error)", parse_errors)
+        if budget_skipped:
+            logger.info("AI scorer: %d articles skipped (budget guardrail)", budget_skipped)
 
         # Log run summary
         logger.info(self.cost_tracker.get_run_summary())

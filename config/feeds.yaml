@@ -1,7 +1,7 @@
 feeds:
   # AI × Cybersec
-  - name: anthropic
-    url: https://www.anthropic.com/rss.xml
+  - name: openai
+    url: https://openai.com/blog/rss.xml
     themes: [ai_cybersec]
     language: en
 
@@ -10,8 +10,8 @@ feeds:
     themes: [ai_cybersec, vibe_coding]
     language: en
 
-  - name: google_threat_intel
-    url: https://cloud.google.com/blog/topics/threat-intelligence/rss
+  - name: google_tag
+    url: https://blog.google/threat-analysis-group/rss/
     themes: [threat_intel, ai_cybersec]
     language: en
 
