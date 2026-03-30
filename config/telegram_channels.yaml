@@ -1,0 +1,30 @@
+channels:
+  # RU
+  - handle: alukatsky
+    themes: [ai_cybersec, threat_intel]
+    language: ru
+
+  - handle: true_secator
+    themes: [threat_intel]
+    language: ru
+
+  - handle: biaboratory
+    themes: [threat_intel, dfir]
+    language: ru
+
+  - handle: By3side
+    themes: [threat_intel, dfir]
+    language: ru
+
+  - handle: in4security
+    themes: [threat_intel]
+    language: ru
+
+  # EN
+  - handle: vaboratory
+    themes: [threat_intel, dfir]
+    language: en
+
+  - handle: thedfirreport
+    themes: [dfir, threat_intel]
+    language: en

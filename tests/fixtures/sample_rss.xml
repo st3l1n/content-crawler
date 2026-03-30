@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Test Security Blog</title>
+    <link>https://example.com</link>
+    <item>
+      <title>New LLM Vulnerability in AI Agent Frameworks</title>
+      <link>https://example.com/llm-vuln</link>
+      <description>&lt;p&gt;Researchers found a &lt;b&gt;critical prompt injection&lt;/b&gt; vulnerability in popular AI agent frameworks.&lt;/p&gt;</description>
+      <pubDate>Mon, 30 Mar 2026 08:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Old Article Should Be Filtered</title>
+      <link>https://example.com/old-article</link>
+      <description>This is from last year.</description>
+      <pubDate>Tue, 15 Jan 2025 10:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>No Date Article</title>
+      <link>https://example.com/no-date</link>
+      <description>Article without publication date.</description>
+    </item>
+  </channel>
+</rss>

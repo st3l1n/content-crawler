@@ -1,0 +1,69 @@
+feeds:
+  # AI × Cybersec
+  - name: anthropic
+    url: https://www.anthropic.com/rss.xml
+    themes: [ai_cybersec]
+    language: en
+
+  - name: simon_willison
+    url: https://simonwillison.net/atom/everything/
+    themes: [ai_cybersec, vibe_coding]
+    language: en
+
+  - name: google_threat_intel
+    url: https://cloud.google.com/blog/topics/threat-intelligence/rss
+    themes: [threat_intel, ai_cybersec]
+    language: en
+
+  - name: microsoft_security
+    url: https://www.microsoft.com/en-us/security/blog/feed/
+    themes: [threat_intel, ai_cybersec]
+    language: en
+
+  # Threat Intelligence / Malware Research
+  - name: sentinellabs
+    url: https://www.sentinelone.com/labs/feed/
+    themes: [threat_intel, dfir]
+    language: en
+
+  - name: cisco_talos
+    url: http://feeds.feedburner.com/feedburner/Talos
+    themes: [threat_intel]
+    language: en
+
+  - name: crowdstrike
+    url: https://www.crowdstrike.com/blog/feed/
+    themes: [threat_intel]
+    language: en
+
+  - name: securelist
+    url: https://securelist.com/feed/
+    themes: [threat_intel]
+    language: en
+
+  - name: unit42
+    url: https://unit42.paloaltonetworks.com/feed/
+    themes: [threat_intel]
+    language: en
+
+  - name: welivesecurity
+    url: https://www.welivesecurity.com/feed/
+    themes: [threat_intel]
+    language: en
+
+  # DFIR
+  - name: dfir_report
+    url: https://thedfirreport.com/feed/
+    themes: [dfir, threat_intel]
+    language: en
+
+  # Vibe Coding
+  - name: langchain
+    url: https://blog.langchain.dev/rss/
+    themes: [vibe_coding, ai_cybersec]
+    language: en
+
+  - name: risky_biz
+    url: https://risky.biz/feeds/risky-business/
+    themes: [vibe_coding, threat_intel]
+    language: en

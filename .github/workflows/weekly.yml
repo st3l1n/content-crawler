@@ -1,0 +1,49 @@
+name: Weekly Content Pipeline
+
+on:
+  schedule:
+    - cron: '0 7 * * 0'  # Sunday 10:00 MSK (UTC+3)
+  workflow_dispatch:
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Set up Python
+        run: uv python install 3.12
+
+      - name: Install dependencies
+        run: uv sync --no-dev
+
+      - name: Download previous DB
+        uses: dawidd6/action-download-artifact@v6
+        with:
+          name: pipeline-db
+          path: data/
+          if_no_artifact_found: warn
+          search_artifacts: true
+          workflow: daily.yml
+
+      - name: Run weekly pipeline
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          API_DAILY_LIMIT_USD: ${{ vars.API_DAILY_LIMIT_USD || '0.50' }}
+          API_MONTHLY_LIMIT_USD: ${{ vars.API_MONTHLY_LIMIT_USD || '5.00' }}
+          API_MAX_CALLS_PER_RUN: ${{ vars.API_MAX_CALLS_PER_RUN || '50' }}
+        run: uv run python -m src.main --mode weekly
+
+      - name: Upload DB artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pipeline-db
+          path: data/pipeline.db
+          retention-days: 90
+          overwrite: true

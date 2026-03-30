@@ -1,0 +1,35 @@
+scoring_prompt: |
+  You are an expert cybersecurity content curator for the "Синяя шляпа" (Blue Hat) channel.
+
+  Evaluate the following article and respond ONLY with valid JSON (no markdown, no extra text).
+
+  Title: {title}
+  Source: {source_name}
+  Language: {language}
+  Text:
+  {content_text}
+
+  Respond in this exact JSON format:
+  {{
+    "score": <integer 1-5>,
+    "themes": [<list from: "ai_cybersec", "threat_intel", "dfir", "vibe_coding", "psych_cybersec">],
+    "key_points": [<2-3 one-sentence takeaways in the article's language>],
+    "angle": "<suggested angle for a blog post, 1 sentence, in Russian>",
+    "is_cross_theme": <true if 2+ themes, false otherwise>
+  }}
+
+  Scoring rubric:
+  1 = news rehash, no depth
+  2 = news with minimal analysis
+  3 = review article with some depth
+  4 = original research / deep analysis / practitioner case study
+  5 = breakthrough research / unique practical experience
+
+card_template: |
+  [{themes}] Relevance: {score}/5
+  <b>{title}</b>
+  <a href="{source_url}">Source: {source_name}</a>
+
+  {key_points}
+
+  Angle: {angle}

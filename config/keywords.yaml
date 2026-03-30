@@ -1,0 +1,72 @@
+themes:
+  ai_cybersec:
+    - LLM
+    - language model
+    - AI agent
+    - agentic
+    - prompt injection
+    - Claude
+    - GPT
+    - copilot
+    - MCP
+    - RAG
+    - security AI
+    - adversarial AI
+    - AI red team
+    - automated analysis
+    - vibe coding
+    - AI malware
+    - AI forensics
+
+  threat_intel:
+    - APT
+    - campaign
+    - threat actor
+    - malware family
+    - C2
+    - infrastructure
+    - TTPs
+    - MITRE ATT&CK
+    - IOC
+    - attribution
+    - supply chain
+    - zero-day
+    - exploit
+
+  dfir:
+    - forensic
+    - incident response
+    - memory dump
+    - artifact
+    - timeline
+    - triage
+    - evidence
+    - disk image
+    - volatility
+    - velociraptor
+    - hayabusa
+    - plaso
+    - KAPE
+
+  vibe_coding:
+    - automation
+    - pipeline
+    - integration
+    - Claude Code
+    - cursor
+    - aider
+    - vibe coding
+    - Python security
+    - DevSecOps
+
+  psych_cybersec:
+    - cognitive bias
+    - human factor
+    - decision making
+    - social engineering psychology
+    - awareness behavior gap
+    - optimism bias
+    - security fatigue
+    - burnout
+    - risk perception
+    - behavioral security
